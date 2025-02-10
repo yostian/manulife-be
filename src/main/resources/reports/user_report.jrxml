@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 5.6.1.final using JasperReports Library version 5.6.1  -->
+<!-- 2025-02-10T11:36:58 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="user_report" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="30" bottomMargin="30" uuid="ce0f37ec-48e3-45d9-aa41-196d43486387">
+	<field name="nama" class="java.lang.String"/>
+	<field name="alamat" class="java.lang.String"/>
+	<field name="jenisUser" class="java.lang.String"/>
+	<field name="createDate" class="java.time.LocalDateTime"/>
+	<field name="createDateAsDate" class="java.util.Date"/>
+	<title>
+		<band height="50">
+			<textField>
+				<reportElement x="0" y="10" width="535" height="30" uuid="dd5cc8c5-9de0-424b-b25f-19ef9518cec4"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Laporan Data " + 
+    ($F{jenisUser}.equals("VIP") || $F{jenisUser}.equals("VVIP") ? "User " + $F{jenisUser} : "Semua User")]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="435" y="0" width="100" height="30" uuid="803c9c65-1785-4ed5-a1de-9ce962905c1f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="25">
+			<staticText>
+				<reportElement x="0" y="0" width="150" height="20" uuid="3ae1d9b8-69f8-4949-a18e-c05f89f81b7a"/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="0" width="197" height="20" uuid="ef445757-2f68-4995-8069-5f6e2cc2518a"/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="0" width="88" height="20" uuid="2fd9c9f5-dbb1-4f9b-8561-3a2ff770e977"/>
+				<text><![CDATA[Jenis User]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="0" width="88" height="20" uuid="1a4b3537-d87a-4d40-80f9-3d251db5f308"/>
+				<text><![CDATA[Tanggal Dibuat]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="0" y="0" width="150" height="20" uuid="248e746f-a42f-4425-86d7-05b39ab57215"/>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="0" width="197" height="20" uuid="35e35af0-ae92-4d54-8c80-f071897feba0"/>
+				<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="0" width="88" height="20" uuid="bb29b13a-f562-4ea4-8ded-04ad9fbe6df5"/>
+				<textFieldExpression><![CDATA[$F{jenisUser}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="0" width="88" height="20" uuid="3827fbf2-43a3-43f2-8fa7-5a9143501cf0"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format($F{createDateAsDate})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20">
+			<textField>
+				<reportElement x="217" y="0" width="100" height="20" uuid="d00b0ec6-24bd-4f84-a0ee-0a3c01043fc1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["Halaman " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
